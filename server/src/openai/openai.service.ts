@@ -42,6 +42,7 @@ export class OpenaiService {
       await this.openAiService.beta.threads.messages.list(threadId);
 
     const response = messages.data[0]?.content[0] as MessageContentText; // Приведение типа и использование optional chaining
+    console.log({ message: response?.text.value });
     return { message: response?.text.value };
   }
 

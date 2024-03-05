@@ -9,6 +9,7 @@ export class OpenaiController {
   @Post('/chat')
   @HttpCode(200)
   async getThreadOpenai(@Body() request) {
+    console.log(request);
     return this.openaiService.getMessagesData(request);
   }
 }
