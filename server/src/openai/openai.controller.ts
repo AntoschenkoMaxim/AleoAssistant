@@ -1,6 +1,7 @@
 import { Body, Controller, HttpCode, Post } from '@nestjs/common';
 
 import { OpenaiService } from './openai.service';
+import { ChatRequest } from './interfaces';
 
 @Controller('openai')
 export class OpenaiController {
@@ -8,8 +9,8 @@ export class OpenaiController {
 
   @Post('/chat')
   @HttpCode(200)
-  async getThreadOpenai(@Body() request) {
+  async getReply(@Body() request: ChatRequest) {
     console.log(request);
-    return this.openaiService.getMessagesData(request);
+    return this.openaiService.getReplyFromOpenAI(request);
   }
 }

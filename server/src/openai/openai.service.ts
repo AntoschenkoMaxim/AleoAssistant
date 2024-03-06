@@ -13,46 +13,60 @@ export class OpenaiService {
     });
   }
 
-  async getMessagesData(request: ChatRequest): Promise<object> {
-    const thread = await this.openAiService.beta.threads.create();
+  async createThread() {
+    return this.openAiService.beta.threads.create();
+  }
 
-    await this.openAiService.beta.threads.messages.create(thread.id, {
+  async createMessage(threadId: string, content: string) {
+    return this.openAiService.beta.threads.messages.create(threadId, {
       role: 'user',
-      content: request.content,
+      content: content,
     });
+  }
 
-    const run = await this.openAiService.beta.threads.runs.create(thread.id, {
+  async createRun(threadId: string) {
+    return this.openAiService.beta.threads.runs.create(threadId, {
       assistant_id: this.configService.getOrThrow('OPENAI_API_ASSISTANT_ID'),
     });
-
-    const messages = await this.checkRunStatus(thread.id, run.id);
-
-    return messages;
   }
 
   async checkRunStatus(threadId: string, runId: string): Promise<object> {
     let runStatus = await this.getRunStatus(threadId, runId);
 
     while (runStatus.status !== 'completed') {
-      await new Promise((resolve) => setTimeout(resolve, 10000)); // Ожидание 5 секунд перед следующим запросом
+      // if (runStatus.status === 'failed') {
+      //   throw new Error('Run failed');
+      // }
+      await new Promise((resolve) => setTimeout(resolve, 10000));
       runStatus = await this.getRunStatus(threadId, runId);
     }
 
     const messages =
       await this.openAiService.beta.threads.messages.list(threadId);
 
-    const response = messages.data[0]?.content[0] as MessageContentText; // Приведение типа и использование optional chaining
+    const response = messages.data[0]?.content[0] as MessageContentText;
     console.log({ message: response?.text.value });
     return { message: response?.text.value };
   }
 
   async getRunStatus(threadId: string, runId: string): Promise<any> {
-    // Метод для получения статуса выполнения
     const runStatus = await this.openAiService.beta.threads.runs.retrieve(
       threadId,
       runId,
     );
 
     return runStatus;
+  }
+
+  async getReplyFromOpenAI(request: ChatRequest): Promise<object> {
+    const thread = await this.createThread();
+
+    await this.createMessage(thread.id, request.content);
+
+    const run = await this.createRun(thread.id);
+
+    const messages = await this.checkRunStatus(thread.id, run.id);
+
+    return messages;
   }
 }
