@@ -4,13 +4,13 @@ import './index.css'
 import 'preline/preline'
 import { IStaticMethods } from 'preline/preline'
 import { ThemeProvider } from './components/modules/ThemeProvider'
-import { Chat } from './components/modules/Chat'
-import { Landing } from './components/modules/Landing'
-import { Footer } from './components/modules/Footer'
 import { useQueryClient } from 'react-query'
 import { Message } from './utils/types'
 import { useSendMessageToAIQuery } from './hooks/useSendMessageToAIQuery'
 import { AI_URL } from './utils/constants'
+import { Landing } from './components/modules/Landing'
+import { Footer } from './components/modules/Footer'
+import { Chat } from './components/modules/Chat'
 declare global {
   interface Window {
     HSStaticMethods: IStaticMethods

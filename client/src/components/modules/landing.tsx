@@ -1,8 +1,8 @@
 import { cards } from '../../utils/constants'
 import { ArrowIcon } from '../icons/ArrowIcon'
-import { Container } from './Container'
 import { Banner } from './Banner'
 import { Card } from './Card'
+import { Container } from './Container'
 import { Description } from './Description'
 import { Title } from './Title'
 
