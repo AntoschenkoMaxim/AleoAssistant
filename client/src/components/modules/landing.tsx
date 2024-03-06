@@ -1,10 +1,10 @@
 import { cards } from '../../utils/constants'
 import { ArrowIcon } from '../icons/ArrowIcon'
-import { Banner } from './Banner'
-import { Card } from './Card'
+import { Banner } from './banner'
+import { Card } from './card'
 import { Container } from './Container'
-import { Description } from './Description'
-import { Title } from './Title'
+import { Description } from './description'
+import { Title } from './title'
 
 type LandingProps = {
   setOrder: (value: string) => void
