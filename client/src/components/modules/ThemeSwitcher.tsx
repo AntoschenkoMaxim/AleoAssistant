@@ -1,5 +1,5 @@
 import { IconBrightnessDown, IconBrightnessUp } from '@tabler/icons-react'
-import { useTheme } from './theme-provider'
+import { useTheme } from './ThemeProvider'
 
 export function ThemeSwitcher() {
   const { theme, setTheme } = useTheme()
