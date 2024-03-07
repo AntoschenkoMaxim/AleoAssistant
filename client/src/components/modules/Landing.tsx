@@ -1,9 +1,9 @@
 import { cards } from '../../utils/constants'
-import { Banner } from './Banners'
-import { Card } from './Cards'
+import { Banner } from './Banner'
+import { Card } from './Card'
 import { Container } from './Container'
-import { Description } from './Descriptions'
-import { Title } from './Titles'
+import { Description } from './Description'
+import { Title } from './Title'
 import { ArrowIcon } from '../icons'
 
 type LandingProps = {
