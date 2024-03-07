@@ -72,7 +72,7 @@ export function Chat({
               onClick={handleClearClick}
             >
               <TrashIcon className='size-4' />
-              Clear messages
+              Clear and finish
             </button>
           </div>
 
