@@ -8,9 +8,9 @@ import { useQueryClient } from 'react-query'
 import { Message } from './utils/types'
 import { useSendMessageToAIQuery } from './hooks/useSendMessageToAIQuery'
 import { AI_URL } from './utils/constants'
-import { Landing } from './components/modules/landing'
-import { Footer } from './components/modules/footer'
-import { Chat } from './components/modules/chat'
+import { Landing } from './components/modules/Landings'
+import { Footer } from './components/modules/Footers'
+import { Chat } from './components/modules/Chats'
 declare global {
   interface Window {
     HSStaticMethods: IStaticMethods

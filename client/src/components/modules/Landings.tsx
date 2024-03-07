@@ -1,10 +1,10 @@
 import { cards } from '../../utils/constants'
-import { ArrowIcon } from '../icons/ArrowIcon'
-import { Banner } from './banner'
-import { Card } from './card'
+import { Banner } from './Banners'
+import { Card } from './Cards'
 import { Container } from './Container'
-import { Description } from './description'
-import { Title } from './title'
+import { Description } from './Descriptions'
+import { Title } from './Titles'
+import { ArrowIcon } from '../icons'
 
 type LandingProps = {
   setOrder: (value: string) => void
@@ -33,11 +33,13 @@ export function Landing({
       <div className='max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10'>
         <Banner
           title='Explore our telegram bot'
-          button='Explore'
+          button='Soon'
           href='https://t.me/AleoAssistant_bot'
         />
         <Title text='Welcome to' subtext='Aleo AI' />
-        <Description text='A user-friendly and secure assistant bringing ease to Aleo Ecosystem.' />
+        <Description
+          text={`A user-friendly and secure assistant bringing ease to Aleo Ecosystem. \n`}
+        />
 
         <div className='mt-7 sm:mt-12 mx-auto max-w-xl relative'>
           <form onSubmit={handleSubmit}>
@@ -75,11 +77,11 @@ export function Landing({
 
         <div className='max-w-5xl py-6 sm:px-6 lg:px-8 lg:py-10 mx-auto'>
           <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6'>
-            {cards.map((card) => (
+            {cards.map((item) => (
               <Card
-                key={card.title}
-                title={card.title}
-                question={card.question}
+                key={item.title}
+                title={item.title}
+                question={item.question}
                 sendMessage={sendMessage}
                 setOrder={setOrder}
               />

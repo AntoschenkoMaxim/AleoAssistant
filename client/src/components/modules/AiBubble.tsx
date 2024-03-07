@@ -1,13 +1,21 @@
+import { motion } from 'framer-motion'
+import { listVariants } from '../../utils/animations'
 import { SmallLogoIcon } from '../icons/SmallLogoIcon'
 
 type AiBubbleProps = {
   greetings: boolean
   reply?: string
+  delay: number
 }
 
-export function AiBubble({ greetings, reply }: AiBubbleProps) {
+export function AiBubble({ greetings, reply, delay }: AiBubbleProps) {
   return (
-    <li className='max-w-4xl  mx-auto flex gap-x-2 sm:gap-x-4'>
+    <motion.li
+      variants={listVariants(delay)}
+      initial='hidden'
+      animate='visible'
+      className='max-w-4xl  mx-auto flex gap-x-2 sm:gap-x-4'
+    >
       <span className='flex-shrink-0 inline-flex items-center justify-center size-[38px] rounded-full border border-gray-200 dark:bg-slate-900 dark:border-gray-700'>
         <SmallLogoIcon className='text-gray-800 dark:text-gray-200' />
       </span>
@@ -48,6 +56,6 @@ export function AiBubble({ greetings, reply }: AiBubbleProps) {
           </>
         )}
       </div>
-    </li>
+    </motion.li>
   )
 }

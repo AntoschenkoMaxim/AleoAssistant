@@ -1,11 +1,8 @@
 import { UserBubble } from './UserBubble'
 import { AiBubble } from './AiBubble'
-import { TrashIcon } from '../icons/TrashIcon'
-import { ArrowIcon } from '../icons/ArrowIcon'
-import { MicrophoneIcon } from '../icons/MicrophoneIcon'
-import { PaperClipIcon } from '../icons/PaperClipIcon'
 import { Message } from '../../utils/types'
 import { Container } from './Container'
+import { ArrowIcon, MicrophoneIcon, PaperClipIcon, TrashIcon } from '../icons'
 
 type ChatProps = {
   input: string
@@ -38,7 +35,7 @@ export function Chat({
       <Container>
         <div className='max-w-4xl px-4 pt-4 sm:px-6 lg:px-8 sm:pt-8 lg:pt-14 mx-auto'>
           <ul
-            className='space-y-5 py-2 max-h-[550px] overflow-y-auto
+            className='space-y-5 py-2 max-h-[600px] overflow-y-auto
   					[&::-webkit-scrollbar]:w-0
   					[&::-webkit-scrollbar-track]:rounded-full
   				[&::-webkit-scrollbar-track]:bg-gray-100
@@ -48,13 +45,18 @@ export function Chat({
   				dark:[&::-webkit-scrollbar-thumb]:bg-slate-500'
           >
             {/* Chat Bubble */}
-            <AiBubble greetings={true} />
+            <AiBubble greetings={true} delay={0.3} />
 
             {messages.map((item, index) =>
               item.author === 'user' ? (
-                <UserBubble key={index} message={item.message} />
+                <UserBubble key={index} message={item.message} delay={0.5} />
               ) : (
-                <AiBubble key={index} greetings={false} reply={item.message} />
+                <AiBubble
+                  key={index}
+                  greetings={false}
+                  reply={item.message}
+                  delay={0.5}
+                />
               )
             )}
           </ul>

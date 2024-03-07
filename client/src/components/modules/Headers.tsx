@@ -1,5 +1,5 @@
-import { LogoIcon } from '../icons/LogoIcon'
 import { ThemeSwitcher } from './ThemeSwitcher'
+import { LogoIcon } from '../icons'
 
 export function Header() {
   return (

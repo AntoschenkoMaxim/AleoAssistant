@@ -1,9 +1,11 @@
-import { GithubIcon } from '../icons/GithubIcon'
-import { OpenaiIcon } from '../icons/OpenaiIcon'
-import { TwitterIcon } from '../icons/TwitterIcon'
-import { LogoIcon } from '../icons/LogoIcon'
-import { DiscordIcon } from '../icons/DiscordIcon'
-import { YoutubeIcon } from '../icons/YoutubeIcon'
+import {
+  DiscordIcon,
+  GithubIcon,
+  LogoIcon,
+  OpenaiIcon,
+  TwitterIcon,
+  YoutubeIcon,
+} from '../icons'
 
 export function Footer() {
   const icons = [
