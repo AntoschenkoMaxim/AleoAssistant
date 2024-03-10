@@ -1,12 +1,9 @@
-import OpenAI from 'openai';
-
 export interface ChatRequest {
   content: string;
 }
 
 export interface ChatResponse {
-  success: boolean;
-  result: OpenAI.ChatCompletion.Choice;
+  message: string;
 }
 
 export interface MessageContentText {

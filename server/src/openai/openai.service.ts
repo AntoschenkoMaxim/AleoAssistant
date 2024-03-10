@@ -45,7 +45,7 @@ export class OpenaiService {
       await this.openAiService.beta.threads.messages.list(threadId);
 
     const response = messages.data[0]?.content[0] as MessageContentText;
-    console.log({ message: response?.text.value });
+    // console.log({ message: response?.text.value });
     return { message: response?.text.value };
   }
 
