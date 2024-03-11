@@ -1,4 +1,4 @@
-export const listVariants = (delay: number) => ({
+export const getListVariants = (delay: number) => ({
   visible: () => ({
     opacity: 1,
     transition: {

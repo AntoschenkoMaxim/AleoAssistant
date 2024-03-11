@@ -43,13 +43,11 @@ export function Title({
   }, [displayedSubtext, isDeleting, subtext, typingSpeed, delayBeforeRepeat])
 
   return (
-    <div className='mt-5 max-w-xl text-center mx-auto'>
-      <h1 className='block font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-gray-200'>
-        {text}{' '}
-        <motion.span className='bg-clip-text bg-gradient-to-tl from-blue-600 to-violet-600 text-transparent'>
-          {displayedSubtext}
-        </motion.span>
-      </h1>
-    </div>
+    <h1 className='block font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-gray-200'>
+      {text}{' '}
+      <motion.span className='bg-clip-text bg-gradient-to-tl from-blue-600 to-violet-600 text-transparent'>
+        {displayedSubtext}
+      </motion.span>
+    </h1>
   )
 }

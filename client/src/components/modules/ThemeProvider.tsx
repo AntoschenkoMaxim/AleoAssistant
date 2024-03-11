@@ -16,10 +16,9 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 export const useTheme = () => {
   const context = useContext(ThemeContext)
   if (context === undefined) {
-    // Эта ошибка будет выброшена, если хук используется вне ThemeProvider
     throw new Error('useTheme must be used within a ThemeProvider')
   }
-  return context // Здесь TypeScript уже будет знать, что context не undefined
+  return context
 }
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {

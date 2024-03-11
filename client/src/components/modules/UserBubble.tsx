@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { UserIcon } from '../icons'
+import { getListVariants } from '../../utils/getListVariants'
 
 type UserBubbleProps = {
   message: string
@@ -7,18 +8,9 @@ type UserBubbleProps = {
 }
 
 export function UserBubble({ message, delay }: UserBubbleProps) {
-  const listVariants = {
-    visible: () => ({
-      opacity: 1,
-      transition: {
-        delay: delay,
-      },
-    }),
-    hidden: { opacity: 0 },
-  }
   return (
     <motion.li
-      variants={listVariants}
+      variants={getListVariants(delay)}
       initial='hidden'
       animate='visible'
       className='max-w-2xl ms-auto flex justify-end gap-x-2 sm:gap-x-4'

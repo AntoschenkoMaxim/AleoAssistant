@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import { listVariants } from '../../utils/animations'
+import { getListVariants } from '../../utils/getListVariants'
 import { SmallLogoIcon } from '../icons/SmallLogoIcon'
+import { questions } from '../../utils/constants'
 
 type AiBubbleProps = {
   greetings: boolean
@@ -11,7 +12,7 @@ type AiBubbleProps = {
 export function AiBubble({ greetings, reply, delay }: AiBubbleProps) {
   return (
     <motion.li
-      variants={listVariants(delay)}
+      variants={getListVariants(delay)}
       initial='hidden'
       animate='visible'
       className='max-w-4xl  mx-auto flex gap-x-2 sm:gap-x-4'
@@ -30,18 +31,14 @@ export function AiBubble({ greetings, reply, delay }: AiBubbleProps) {
                 You can ask questions like:
               </p>
               <ul className='list-disc list-outside space-y-1.5 ps-3.5'>
-                <li className='text-sm text-gray-800 dark:text-white'>
-                  Can you explain Aleo's blockchain technology?
-                </li>
-
-                <li className='text-sm text-gray-800 dark:text-white'>
-                  What tools and programming languages does Aleo support?
-                </li>
-
-                <li className='text-sm text-gray-800 dark:text-white'>
-                  What are private smart contracts, and how do they operate in
-                  Aleo?
-                </li>
+                {questions.map((item) => (
+                  <li
+                    key={item}
+                    className='text-sm text-gray-800 dark:text-white'
+                  >
+                    {item}
+                  </li>
+                ))}
               </ul>
             </div>
           </>

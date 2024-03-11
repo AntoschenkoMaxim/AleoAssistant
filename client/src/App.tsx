@@ -8,9 +8,7 @@ import { useQueryClient } from 'react-query'
 import { Message } from './utils/types'
 import { useSendMessageToAIQuery } from './hooks/useSendMessageToAIQuery'
 import { AI_URL } from './utils/constants'
-import { Landing } from './components/modules/Landing'
-import { Footer } from './components/modules/Footer'
-import { Chat } from './components/modules/Chat'
+import { LayoutPage } from './pages'
 declare global {
   interface Window {
     HSStaticMethods: IStaticMethods
@@ -43,35 +41,18 @@ function App() {
     setOrder('landing')
   }
 
-  const handleCreateClick = () => {
-    client.setQueryData<Message[]>('messages', [])
-    client.invalidateQueries('messages')
-  }
-
   return (
     <ThemeProvider>
-      <div className='h-screen flex flex-col'>
-        {/* <Header /> */}
-        {order === 'landing' ? (
-          <Landing
-            setOrder={setOrder}
-            input={input}
-            setInput={setInput}
-            sendMessage={sendMessage}
-          />
-        ) : (
-          <Chat
-            input={input}
-            setInput={setInput}
-            sendMessage={sendMessage}
-            isLoading={isLoading}
-            messages={messages}
-            handleClearClick={handleClearClick}
-            handleCreateClick={handleCreateClick}
-          />
-        )}
-        <Footer />
-      </div>
+      <LayoutPage
+        order={order}
+        setOrder={setOrder}
+        input={input}
+        setInput={setInput}
+        sendMessage={sendMessage}
+        isLoading={isLoading}
+        messages={messages}
+        handleClearClick={handleClearClick}
+      />
     </ThemeProvider>
   )
 }
