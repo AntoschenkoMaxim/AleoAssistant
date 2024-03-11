@@ -19,36 +19,38 @@ export class TelegramService {
   }
 
   @Hears('blockchain')
-  async replyAboutBlockchain() {
-    return this.replyFromOpenAI({
+  async replyAboutBlockchain(@Ctx() ctx: Context) {
+    return this.replyFromOpenAI(ctx, {
       content: `Can you explain Aleo's blockchain technology?`,
     });
   }
 
   @Hears('tools')
-  async replyAboutTools() {
-    return this.replyFromOpenAI({
+  async replyAboutTools(@Ctx() ctx: Context) {
+    return this.replyFromOpenAI(ctx, {
       content: 'What tools and programming languages does Aleo support?',
     });
   }
 
   @Hears('contracts')
-  async replyAboutContracts() {
-    return this.replyFromOpenAI({
+  async replyAboutContracts(@Ctx() ctx: Context) {
+    return this.replyFromOpenAI(ctx, {
       content:
         'What are private smart contracts, and how do they operate in Aleo?',
     });
   }
 
   @On('text')
-  async onMessage(@Message('text') content: string) {
-    return this.replyFromOpenAI({ content });
+  async onMessage(@Ctx() ctx: Context, @Message('text') content: string) {
+    return this.replyFromOpenAI(ctx, { content });
   }
 
-  private async replyFromOpenAI(content: ChatRequest) {
+  private async replyFromOpenAI(@Ctx() ctx: Context, content: ChatRequest) {
+    await ctx.replyWithHTML(`⏳Generate response...`);
     const reply = (await this.openaiService.getReplyFromOpenAI(
       content,
     )) as ChatResponse;
+
     return reply?.message;
   }
 }

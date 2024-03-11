@@ -34,9 +34,6 @@ export class OpenaiService {
     let runStatus = await this.getRunStatus(threadId, runId);
 
     while (runStatus.status !== 'completed') {
-      // if (runStatus.status === 'failed') {
-      //   throw new Error('Run failed');
-      // }
       await new Promise((resolve) => setTimeout(resolve, 10000));
       runStatus = await this.getRunStatus(threadId, runId);
     }
@@ -45,7 +42,6 @@ export class OpenaiService {
       await this.openAiService.beta.threads.messages.list(threadId);
 
     const response = messages.data[0]?.content[0] as MessageContentText;
-    // console.log({ message: response?.text.value });
     return { message: response?.text.value };
   }
 
