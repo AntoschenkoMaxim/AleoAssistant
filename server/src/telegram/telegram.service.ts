@@ -46,7 +46,7 @@ export class TelegramService {
   }
 
   private async replyFromOpenAI(@Ctx() ctx: Context, content: ChatRequest) {
-    await ctx.replyWithHTML(`⏳Generate response...`);
+    await ctx.replyWithHTML(`⏳Generating response...`);
     const reply = (await this.openaiService.getReplyFromOpenAI(
       content,
     )) as ChatResponse;
