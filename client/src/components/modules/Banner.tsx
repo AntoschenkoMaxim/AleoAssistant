@@ -4,13 +4,13 @@ type BannerProps = {
   href?: string
 }
 
-export function Banner({ title, button }: BannerProps) {
+export function Banner({ title, button, href }: BannerProps) {
   return (
     <div className='flex justify-center'>
       <a
         className='inline-flex items-center gap-x-2 bg-white border border-gray-200 text-xs text-gray-600 p-2 px-3 rounded-full transition hover:border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:hover:border-gray-600 dark:text-gray-400'
-        // href={href}
-        // target='_blank'
+        href={href}
+        target='_blank'
       >
         {title}
         <span className='flex items-center gap-x-1'>
